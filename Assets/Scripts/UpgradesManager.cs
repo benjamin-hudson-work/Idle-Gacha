@@ -44,7 +44,7 @@ public class UpgradesManager : MonoBehaviour
         clickUpgradeNames = new[] {"Click Power +1", "Click Power +5", "Click Power +10"};
         passiveUpgradeNames = new[] {"+1 GpS", "+2 GpS", "+10 GpS"};
 
-        clickUpgradeBaseCost = new double[] {10, 50, 100};
+        clickUpgradeBaseCost = new double[] {3, 50, 100};
         clickUpgradeMultiplier = new double[] {1.25, 1.35, 1.55};
         clickUpgradeBasePower = new double[] {1, 5, 10};
 

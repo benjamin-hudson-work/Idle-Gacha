@@ -12,6 +12,10 @@ public class Data
     public List<double> passiveUpgradeLevel; 
     public double highestLevel;
     public double currentLevel;
+    public double monstersLeft;
+
+    public bool NextLevelOnClear;
+    public bool AutoSave;
 
     public Data()
     {
@@ -20,7 +24,10 @@ public class Data
         clickUpgradeLevel = Methods.CreateList<double>(3);
         passiveUpgradeLevel = Methods.CreateList<double>(3);
 
-        highestLevel = 9;
-        currentLevel = 0;
+        highestLevel = 1;
+        currentLevel = 1;
+        NextLevelOnClear = true;
+        AutoSave = false;
+        monstersLeft = 10;
     }
 }

@@ -15,6 +15,8 @@ public class Navigation : MonoBehaviour
 
     public GameObject HomeScreen;
     public GameObject SettingsScreen;
+    public GameObject AutoButton;
+    public GameObject SaveButton;
 
     public void SwitchUpgrades(string location)
     {
@@ -56,5 +58,26 @@ public class Navigation : MonoBehaviour
                 SettingsScreen.SetActive(true);
                 break;
         }
+    }
+        //Settings Buttons
+
+    public void Start()
+    {
+        if (Controller.instance.data.NextLevelOnClear) AutoButton.SetActive(true);
+        else AutoButton.SetActive(false);
+        if (Controller.instance.data.AutoSave) SaveButton.SetActive(true);
+        else SaveButton.SetActive(false);
+    }
+    public void ToggleAutoAdvance()
+    {
+        Controller.instance.data.NextLevelOnClear = !Controller.instance.data.NextLevelOnClear;
+        if (Controller.instance.data.NextLevelOnClear) AutoButton.SetActive(true);
+        else AutoButton.SetActive(false);
+    }
+    public void ToggleAutoSave()
+    {
+        Controller.instance.data.AutoSave = !Controller.instance.data.AutoSave;
+        if (Controller.instance.data.AutoSave) SaveButton.SetActive(true);
+        else SaveButton.SetActive(false);
     }
 }

@@ -11,7 +11,7 @@ public class Controller : MonoBehaviour
 
     public Data data;
     public UpgradesManager upgradesManager;
-
+    public LevelManager levelmanager;
     public TMP_Text goldtext;
     public TMP_Text goldclickpowertext;
     public TMP_Text goldpersecondtext;
@@ -43,16 +43,17 @@ public class Controller : MonoBehaviour
         upgradesManager.StartUpdateManager();
     }
 
+    private double damage;
     public void Update()
     {
         goldtext.text = $"{data.gold:F2} gold"; 
-        goldclickpowertext.text = "+" + ClickPower() + " Gold";
-
-        data.gold += GoldPerSecond() * Time.deltaTime;
+        goldclickpowertext.text = "+" + ClickPower() + " Damage per Click";
         goldpersecondtext.text = $"{GoldPerSecond():F2}/s";
 
+        levelmanager.HurtMonster(GoldPerSecond() * Time.deltaTime);
+
         SaveTime += Time.deltaTime * (1 / Time.timeScale);
-        if (SaveTime >= 15)
+        if (SaveTime >= 15 && data.AutoSave)
         {
             SaveSystem.SaveData(data, dataFileName);
             SaveTime = 0;
@@ -61,6 +62,6 @@ public class Controller : MonoBehaviour
 
     public void EarnGold()
     {
-        data.gold += ClickPower();
+        levelmanager.HurtMonster(ClickPower());
     }
 }
