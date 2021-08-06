@@ -17,6 +17,8 @@ public class Data
     public bool NextLevelOnClear;
     public bool AutoSave;
 
+    public int[] SkillLevels;
+
     public Data()
     {
         gold = 0;
@@ -29,5 +31,6 @@ public class Data
         NextLevelOnClear = true;
         AutoSave = false;
         monstersLeft = 10;
+        SkillLevels = new int[6]; 
     }
 }

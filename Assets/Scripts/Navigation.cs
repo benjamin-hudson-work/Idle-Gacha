@@ -15,6 +15,7 @@ public class Navigation : MonoBehaviour
 
     public GameObject HomeScreen;
     public GameObject SettingsScreen;
+    public GameObject PrestigeScreen;
     public GameObject AutoButton;
     public GameObject SaveButton;
 
@@ -48,6 +49,7 @@ public class Navigation : MonoBehaviour
     {
         HomeScreen.SetActive(false);
         SettingsScreen.SetActive(false);
+        PrestigeScreen.SetActive(false);
 
         switch (location)
         {
@@ -57,6 +59,9 @@ public class Navigation : MonoBehaviour
             case "Settings":
                 SettingsScreen.SetActive(true);
                 break;
+            case "Prestige":
+                PrestigeScreen.SetActive(true);
+                break; 
         }
     }
         //Settings Buttons
