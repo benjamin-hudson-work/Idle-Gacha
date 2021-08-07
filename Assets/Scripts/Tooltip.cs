@@ -6,6 +6,8 @@ using UnityEngine.UI;
 using TMPro;
  public class Tooltip : MonoBehaviour
  {
+     public static Tooltip instance;
+     private void Awake() => instance = this;
      public bool IsActive = true;
  
      Camera cam;
