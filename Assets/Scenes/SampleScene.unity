@@ -4296,7 +4296,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1170047291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4965,14 +4965,13 @@ MonoBehaviour:
     SkillLevels: 000000000000000000000000000000000000000000000000
     SkillPoint: 30
     prestigePoints: 0
-  monsterCarrier: {fileID: 563225399}
+  monster: {fileID: 0}
   leftButton: {fileID: 745093504}
   rightButton: {fileID: 1988537338}
   monsterHealthBar: {fileID: 1326928102}
   levelText: {fileID: 1891435014}
   monsterHealthText: {fileID: 881493402}
   monstersLeftText: {fileID: 946871219}
-  monsters: []
 --- !u!1 &1460963923
 GameObject:
   m_ObjectHideFlags: 0
