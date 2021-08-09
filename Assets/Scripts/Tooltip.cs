@@ -7,7 +7,8 @@ using TMPro;
  public class Tooltip : MonoBehaviour
  {
      public bool IsActive = true;
- 
+    public static Tooltip instance;
+    private void Awake() => instance = this;
      Camera cam;
      Vector3 min, max;
      RectTransform rect;
