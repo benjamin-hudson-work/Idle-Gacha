@@ -82,9 +82,10 @@ public class LevelManager : MonoBehaviour
     }
     public void NewSprite() //WIP
     {
-        if (IsBoss() == 1)
+        
+        if (IsBoss() == 0)
         {
-
+            
         }
         else
         {

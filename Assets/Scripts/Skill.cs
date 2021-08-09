@@ -23,7 +23,7 @@ public class Skill : MonoBehaviour
         foreach (var connectedSkill in ConnectedSkills)
         {
             skillTree.SkillList[connectedSkill].gameObject.SetActive(Controller.instance.data.SkillLevels[id] > 0);
-            skillTree.ConnectorList[connectedSkill].SetActive(Controller.instance.data.SkillLevels[id] > 0);
+            //skillTree.ConnectorList[connectedSkill].SetActive(Controller.instance.data.SkillLevels[id] > 0);
         }
     }
     public void Buy()

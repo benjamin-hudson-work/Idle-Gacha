@@ -41,12 +41,12 @@ public class UpgradesManager : MonoBehaviour
         data = Controller.instance.data;
         Methods.UpgradeCheck(ref data.clickUpgradeLevel, 3); 
 
-        clickUpgradeNames = new[] {"Click Power +1", "Click Power +5", "Click Power +10"};
+        clickUpgradeNames = new[] {"Click Power +100", "Click Power +5", "Click Power +10"};
         passiveUpgradeNames = new[] {"+1 GpS", "+2 GpS", "+10 GpS"};
 
         clickUpgradeBaseCost = new double[] {3, 50, 100};
         clickUpgradeMultiplier = new double[] {1.25, 1.35, 1.55};
-        clickUpgradeBasePower = new double[] {1, 5, 10};
+        clickUpgradeBasePower = new double[] {100, 5, 10};
 
         passiveUpgradeBaseCost = new double[] {25, 100, 1000};
         passiveUpgradeMultiplier = new double[] {1.5, 1.79, 2};
