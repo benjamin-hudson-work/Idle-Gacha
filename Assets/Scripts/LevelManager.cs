@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using Random=UnityEngine.Random;
 
 public class LevelManager : MonoBehaviour
 {
     public Data data;
-    public GameObject monsterCarrier;
+    public GameObject monster;
     public GameObject leftButton;
     public GameObject rightButton;
     public Image monsterHealthBar;
@@ -17,14 +16,7 @@ public class LevelManager : MonoBehaviour
     public TMP_Text monsterHealthText;
     public TMP_Text monstersLeftText;
     private double monsterHealth;
-    public List<GameObject> monsters;
 
-    public void Start()
-    {
-        foreach (var monster in monsterCarrier.GetComponentsInChildren<RectTransform>()) monsters.Add(monster.gameObject);
-        monsters.RemoveAt(0);
-        NewSprite();
-    }
     public void PreviousLevel()
     {
         if (Controller.instance.data.currentLevel > 1)
@@ -90,14 +82,13 @@ public class LevelManager : MonoBehaviour
     }
     public void NewSprite() //WIP
     {
-        foreach (var sprite in monsters) sprite.SetActive(false);
-        if (IsBoss() == 0)
+        if (IsBoss() == 1)
         {
-            monsters[Random.Range(0,2)].SetActive(true);
+
         }
         else
         {
-            monsters[2].SetActive(true);
+            
         }
     }
     public void SetHealthBar() => monsterHealthBar.fillAmount = (float)(monsterHealth / GetMonsterMaxHealth());
