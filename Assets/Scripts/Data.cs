@@ -18,7 +18,8 @@ public class Data
     public bool AutoSave;
 
     public int[] SkillLevels;
-
+    public int SkillPoint;
+    public double prestigePoints;
     public Data()
     {
         gold = 0;
@@ -32,5 +33,18 @@ public class Data
         AutoSave = false;
         monstersLeft = 10;
         SkillLevels = new int[6]; 
+        SkillPoint = 30;
+        prestigePoints = 0;
+    }
+    public void ResetData()
+    {
+        gold = 0;
+
+        clickUpgradeLevel = Methods.CreateList<double>(3);
+        passiveUpgradeLevel = Methods.CreateList<double>(3);
+
+        highestLevel = 1;
+        currentLevel = 1;
+        monstersLeft = 10;
     }
 }

@@ -12,9 +12,11 @@ public class Controller : MonoBehaviour
     public Data data;
     public UpgradesManager upgradesManager;
     public LevelManager levelmanager;
+    public PrestigeTree prestigetree;
     public TMP_Text goldtext;
     public TMP_Text goldclickpowertext;
     public TMP_Text goldpersecondtext;
+    public TMP_Text prestigeButton;
 
     public double ClickPower()   //click
     {
@@ -41,6 +43,7 @@ public class Controller : MonoBehaviour
             : new Data();
 
         upgradesManager.StartUpdateManager();
+        prestigetree.StartPrestigeTree();
     }
 
     private double damage;
@@ -63,5 +66,13 @@ public class Controller : MonoBehaviour
     public void EarnGold()
     {
         levelmanager.HurtMonster(ClickPower());
+    }
+    public void Prestige()
+    {
+        data.ResetData();
+        levelmanager.monstersLeftText.text = $"{data.monstersLeft} Monsters to Next Level";
+        levelmanager.InitiateLevel();
+        data.prestigePoints++; //WIP
+        prestigeButton.text = $"Currently {data.prestigePoints} Prestige points, multiplying DPS by 0%.";
     }
 }

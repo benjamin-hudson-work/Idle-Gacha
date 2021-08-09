@@ -12,7 +12,7 @@ public class LevelManager : MonoBehaviour
     public GameObject monsterCarrier;
     public GameObject leftButton;
     public GameObject rightButton;
-    public GameObject monsterHealthBar;
+    public Image monsterHealthBar;
     public TMP_Text levelText;
     public TMP_Text monsterHealthText;
     public TMP_Text monstersLeftText;
@@ -30,9 +30,7 @@ public class LevelManager : MonoBehaviour
         if (Controller.instance.data.currentLevel > 1)
         {
             Controller.instance.data.currentLevel -= 1;
-            levelText.text = $"Level {Controller.instance.data.currentLevel}";
-            monsterHealth = GetMonsterMaxHealth();
-            monstersLeftText.gameObject.SetActive(false);
+            InitiateLevel();
         }
     }
     public void NextLevel() //Checks if at highest level to show remaining monsters
@@ -40,16 +38,14 @@ public class LevelManager : MonoBehaviour
         if (Controller.instance.data.currentLevel < Controller.instance.data.highestLevel)
         {
             Controller.instance.data.currentLevel += 1;
-            levelText.text = $"Level {Controller.instance.data.currentLevel}";
-            monsterHealth = GetMonsterMaxHealth();
-            if (IsHighestLevel()) monstersLeftText.gameObject.SetActive(true);
-            else monstersLeftText.gameObject.SetActive(false);
+            InitiateLevel();
         }
     }
     public void HurtMonster(double damage) //Damages monster for input, kills if monster health < 0
     {
         monsterHealth -= damage;
         monsterHealthText.text = $"{monsterHealth:F2}";
+        SetHealthBar();
         if (monsterHealth <= 0) KillMonster();
     }
     public void KillMonster() //Reduces remaining monsters, goes to next level if no more monsters, resets monster health
@@ -68,6 +64,7 @@ public class LevelManager : MonoBehaviour
             else data.monstersLeft = 10;
         }
         monsterHealth = GetMonsterMaxHealth(); //TODO: Multiple monster tiles
+        SetHealthBar();
         NewSprite();
         monstersLeftText.text = $"{data.monstersLeft} Monsters to Next Level";
         if (IsBoss() == 1) monstersLeftText.text = "Boss Level!";
@@ -84,6 +81,13 @@ public class LevelManager : MonoBehaviour
         return 0;
     }
     public bool IsHighestLevel() {return (Controller.instance.data.currentLevel == Controller.instance.data.highestLevel);}
+    public void InitiateLevel()
+    {
+        levelText.text = $"Level {Controller.instance.data.currentLevel}";
+        monsterHealth = GetMonsterMaxHealth();
+        if (IsHighestLevel()) monstersLeftText.gameObject.SetActive(true);
+        else monstersLeftText.gameObject.SetActive(false);
+    }
     public void NewSprite() //WIP
     {
         foreach (var sprite in monsters) sprite.SetActive(false);
@@ -96,4 +100,5 @@ public class LevelManager : MonoBehaviour
             monsters[2].SetActive(true);
         }
     }
+    public void SetHealthBar() => monsterHealthBar.fillAmount = (float)(monsterHealth / GetMonsterMaxHealth());
 }

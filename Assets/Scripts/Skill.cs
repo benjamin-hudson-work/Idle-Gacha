@@ -15,10 +15,10 @@ public class Skill : MonoBehaviour
     public void UpdateUI()
     {
         TitleText.text = $"{skillTree.SkillNames[id]}";
-        DescriptionText.text = $"{skillTree.SkillDescriptions[id]}\nCost: {skillTree.SkillPoint}/1 Point";
+        DescriptionText.text = $"{skillTree.SkillDescriptions[id]}\nCost: {Controller.instance.data.SkillPoint}/1 Point";
 
         GetComponent<Image>().color = Controller.instance.data.SkillLevels[id] >= skillTree.SkillCaps[id] ? Color.yellow :
-            skillTree.SkillPoint > 0 ? Color.green : Color.white; //yellow if max, green if afford, white if neither.
+            Controller.instance.data.SkillPoint > 0 ? Color.green : Color.white; //yellow if max, green if afford, white if neither.
         
         foreach (var connectedSkill in ConnectedSkills)
         {
@@ -28,8 +28,8 @@ public class Skill : MonoBehaviour
     }
     public void Buy()
     {
-        if (skillTree.SkillPoint < 1 || Controller.instance.data.SkillLevels[id] >= skillTree.SkillCaps[id]) return;
-        skillTree.SkillPoint -= 1;
+        if (Controller.instance.data.SkillPoint < 1 || Controller.instance.data.SkillLevels[id] >= skillTree.SkillCaps[id]) return;
+        Controller.instance.data.SkillPoint -= 1;
         Controller.instance.data.SkillLevels[id]++;
         skillTree.UpdateAllSkillUI();
     }

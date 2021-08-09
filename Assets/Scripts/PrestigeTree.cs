@@ -18,11 +18,8 @@ public class PrestigeTree : MonoBehaviour
     public GameObject SkillHolder; 
     public List<GameObject> ConnectorList;
     public GameObject ConnectorHolder;
-    public int SkillPoint;
-    private void Start()
+    public void StartPrestigeTree()
     {
-        SkillPoint = 20;
-
         SkillCaps = new[] {1, 1, 1, 1, 1, 1};
         SkillNames = new[] {"Upgrade 1", "Upgrade 2", "Upgrade 3", "Upgrade 4", "Booster 5", "Booster 6"};
         SkillDescriptions = new[]
@@ -36,7 +33,6 @@ public class PrestigeTree : MonoBehaviour
         };
 
         foreach (var skill in SkillHolder.GetComponentsInChildren<Skill>()) SkillList.Add(skill);
-        foreach (var connector in ConnectorHolder.GetComponentsInChildren<RectTransform>()) ConnectorList.Add(connector.gameObject);
         
         for (var i = 0; i < SkillList.Count; i++) SkillList[i].id = i;
 
