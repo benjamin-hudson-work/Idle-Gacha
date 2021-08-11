@@ -22,7 +22,7 @@ public class Controller : MonoBehaviour
     {
         double total = 1;
         for (int i = 0; i < data.clickUpgradeLevel.Count; i++)
-            total += upgradesManager.clickUpgradeBasePower[i] * data.clickUpgradeLevel[i];
+            total += upgradesManager.clickUpgradeBasePower[i] * data.clickUpgradeLevel[i] * SubUpgradePower(i);
         return total;
     }
 
@@ -30,7 +30,14 @@ public class Controller : MonoBehaviour
     {
         double total = 0;
         for (int i = 0; i < data.passiveUpgradeLevel.Count; i++)
-            total += upgradesManager.passiveUpgradeBasePower[i] * data.passiveUpgradeLevel[i];
+            total += upgradesManager.passiveUpgradeBasePower[i] * data.passiveUpgradeLevel[i] * SubUpgradePower(i);
+        return total;
+    }
+    public double SubUpgradePower(int index)
+    {
+        double total = 1;
+        for (int i = 0; i < 4; i++)
+            total = total + upgradesManager.subUpgradeBasePower[index, i] * data.subUpgradeLevel[index, i];
         return total;
     }
 
