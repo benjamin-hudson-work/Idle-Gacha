@@ -18,6 +18,7 @@ public class Upgrades : MonoBehaviour
     public TMP_Text SubUpgradeCost2;
     public TMP_Text SubUpgradeCost3;
     public TMP_Text SubUpgradeCost4;
+    public GameObject[] SubUpgradeButton;
 
     public void Start()
     {

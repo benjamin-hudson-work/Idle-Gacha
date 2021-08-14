@@ -121,7 +121,17 @@ public class UpgradesManager : MonoBehaviour
             upgrades[ID].SubUpgradeCost1.text = $"{sCost[ID, 0]:F2}";
             upgrades[ID].SubUpgradeCost2.text = $"{sCost[ID, 1]:F2}";
             upgrades[ID].SubUpgradeCost3.text = $"{sCost[ID, 2]:F2}";
-            upgrades[ID].SubUpgradeCost4.text = $"{sCost[ID, 3]:F2}";           
+            upgrades[ID].SubUpgradeCost4.text = $"{sCost[ID, 3]:F2}";
+            if (data.passiveUpgradeLevel[ID] > 0) upgrades[ID].SubUpgradeButton[0].SetActive(true);
+            else upgrades[ID].SubUpgradeButton[0].SetActive(false);
+            for (int i = 0; i < 4; i++)
+            {
+                if (data.subUpgradeLevel[ID, i] == 1) {
+                    upgrades[ID].SubUpgradeButton[i + 1].SetActive(true);
+                    upgrades[ID].SubUpgradeButton[i].GetComponent<Image>().color = Color.green;
+                }
+                else upgrades[ID].SubUpgradeButton[i + 1].SetActive(false);
+            }       
         } 
     }
 
