@@ -16,8 +16,11 @@ public class Navigation : MonoBehaviour
     public GameObject HomeScreen;
     public GameObject SettingsScreen;
     public GameObject PrestigeScreen;
+    public GameObject GachaCanvas;
     public GameObject AutoButton;
     public GameObject SaveButton;
+    public GameObject MainCanvas;
+
 
     public void SwitchUpgrades(string location)
     {
@@ -50,17 +53,24 @@ public class Navigation : MonoBehaviour
         HomeScreen.SetActive(false);
         SettingsScreen.SetActive(false);
         PrestigeScreen.SetActive(false);
+        GachaCanvas.SetActive(false);
 
         switch (location)
         {
             case "Home":
                 HomeScreen.SetActive(true);
+                MainCanvas.SetActive(true);
+                GachaManager.instance.ResetObjectPositions();
                 break;
             case "Settings":
                 SettingsScreen.SetActive(true);
                 break;
             case "Prestige":
                 PrestigeScreen.SetActive(true);
+                break; 
+            case "Gacha":
+                MainCanvas.SetActive(false);
+                GachaCanvas.SetActive(true);
                 break; 
         }
     }
